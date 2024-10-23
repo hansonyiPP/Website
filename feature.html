@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Recon. Made Easier!</title>
+    <link rel="stylesheet" href="feature.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Hanson Yip</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="generate.html">Generator</a></li>
+                <li><a href="feature.html">Explanation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search...">
+        <input type="button" value="Search">
+    </div>
+
+    <h1>Features Explanation</h1> 
+
+    <table id="featuresTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Features</th>
+                <th>Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Directory Listing</td>
+                <td>Explores web servers for misconfigurations that allow users to view a list of files and directories, potentially exposing sensitive information</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Publicly Exposed Documents</td>
+                <td>Identifies documents accessible to the public that may contain confidential information</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Database Files</td>
+                <td>Locates backup or configuration files that may contain database credentials or sensitive data</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Log Files</td>
+                <td>Retrieves logs that can contain information about system activities or errors</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Robots.txt Files</td>
+                <td>Checks for the presence of a robots.txt file that can reveal hidden directories or pages</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>SQL Errors</td>
+                <td>Searches for error messages that can disclose database structure or vulnerabilities</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>phpinfo()</td>
+                <td>Accesses a PHP configuration file that can reveal sensitive server information and configurations</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Subdomain Lookup</td>
+                <td>Identifies subdomains of a website, which may expose additional attack surfaces</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Whois Domain Lookup</td>
+                <td>Provides registration details for a domain, including ownership and contact information</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Pastebin</td>
+                <td>Searches for leaked information or credentials that have been posted publicly on Pastebin</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Wayback Machine</td>
+                <td>Accesses archived versions of a website to find outdated or sensitive information</td>
+            </tr>
+                <td>12</td>
+                <td>Shodan</td>
+                <td>Searches for devices connected to the internet and identifies vulnerabilities in them</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Github</td>
+                <td>Looks for exposed source code or sensitive information in public repositories</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>StackOverflow</td>
+                <td>Utilizes forums to find potential vulnerabilities or coding mistakes discussed by developers</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>LinkedIn</td>
+                <td>Gathers professional information that can be useful for social engineering or targeting</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Open Bug Bounty</td>
+                <td>Participates in programs that reward the discovery of vulnerabilities in software or systems</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>SourceCode Search Engine</td>
+                <td>Searches for code snippets or files that may contain vulnerabilities or sensitive information</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Scam Detection</td>
+                <td>Searches for code snippets or files that may contain vulnerabilities or sensitive information</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Malware Security Checker</td>
+                <td>Scans websites or files for known malware signatures, helping identify potential threats and compromised systems</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>SSL Certification Inspection</td>
+                <td>Evaluates the validity and strength of SSL certificates on a website, checking for vulnerabilities in encryption and ensuring secure connections</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const table = document.getElementById('featuresTable');
+            const rows = table.getElementsByTagName('tr');
+    
+            for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header
+                const cells = rows[i].getElementsByTagName('td');
+                let matchFound = false;
+    
+                for (let j = 0; j < cells.length; j++) {
+                    const cell = cells[j];
+                    const text = cell.textContent || cell.innerText;
+    
+                    // Clear existing highlights
+                    cell.innerHTML = text;
+    
+                    if (filter && text.toLowerCase().includes(filter)) {
+                        matchFound = true;
+                        // Highlight matching text
+                        const highlightedText = text.replace(new RegExp(`(${filter})`, 'gi'), '<span class="highlight">$1</span>');
+                        cell.innerHTML = highlightedText;
+                    }
+                }
+    
+                // Show or hide row based on match
+                rows[i].style.display = matchFound ? '' : 'none'; 
+            }
+    
+            // If search box is empty, reset all rows and clear highlights
+            if (!filter) {
+                for (let i = 1; i < rows.length; i++) {
+                    const cells = rows[i].getElementsByTagName('td');
+                    for (let j = 0; j < cells.length; j++) {
+                        const cell = cells[j];
+                        const text = cell.textContent || cell.innerText;
+                        cell.innerHTML = text; // Reset to original text
+                    }
+                    rows[i].style.display = ''; // Show all rows
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>
