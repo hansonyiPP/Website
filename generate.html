@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <title>Search Feature</title>
+    <link rel="stylesheet" href="generate.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">Hanson Yip</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="genarate.html">Generator</a></li>
+                <li><a href="features.html">Explanation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-box">
+            <h2>Search Feature</h2>
+            <form>
+                <label for="inputBox">Target Website/Domain Name:</label>
+                <input type="text" id="inputBox" placeholder="Enter your domain (e.g. something.com)" />
+
+                <label for="searchType">Features:</label>
+                <select id="searchType">
+                    <option value="directory">Directory Search</option>
+                    <option value="document">Publcily Exposed Documents</option>
+                    <option value="database">Database Files</option>
+                    <option value="log">Log Files</option>
+                    <option value="robot">Robots.txt Files</option>
+                    <option value="sql">SQL Errors</option>
+                    <option value="php">phpinfo()</option>
+                    <option value="subdomain">Subdomain Lookup</option>
+                    <option value="domain">Whois Domain Lookup</option>
+                    <option value="pastebin">Pastebin</option>
+                    <option value="wayback">Wayback Machine</option>
+                    <option value="shodan">Shodan</option>
+                    <option value="github">Github/GitLab</option>
+                    <option value="stackoverflow">StackOverflow</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="openbugbounty">Open Bug Bounty</option>
+                    <option value="sourcecode">SourceCode Search Engine</option>
+                    <option value="scam">Scam Detection</option>
+                    <option value="malware">Malware Security Checker</option>
+                    <option value="ssl">SSL Certification Inspection</option>
+                    <option value="netcraft">Netcraft Site Report</option>
+                </select>
+
+                <!-- <button type="button" onclick="performSearch()">Search</button> -->
+
+                <button class="g-recaptcha" 
+                    type="button" 
+                    data-sitekey="6LdB1WUqAAAAAETHDNGr6gr6Yxboh2mH0aolHflX"
+                    onclick="performSearch()"   
+                    data-callback='onSubmit' 
+                    data-action='submit'>Submit</button>
+
+                <div id="result">Query: </div>
+                <div id="error" style="color: red;"></div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function performSearch() {
+            const input = document.getElementById('inputBox').value.trim();
+            const searchType = document.getElementById('searchType').value;
+            const resultBox = document.getElementById('result');
+            const errorBox = document.getElementById('error');
+
+            // Reset the error box
+            errorBox.textContent = '';
+
+            // Regular expression for domain validation
+            const domainPattern = /^(?!:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}(\/.*)?$/;
+
+            if (input === '' || !domainPattern.test(input)) {
+                errorBox.textContent = 'Please enter a valid domain name (e.g., something.com or something.net).';
+                return;
+            }
+
+            let result;
+            let searchUrl;
+            if (searchType === 'directory') {
+                result = `site:${input} intitle:index.of`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'document') {
+                result = `site:${input} ext:doc | ext:docx | ext:odt | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'database') {
+                result = `site:${input} ext:sql | ext:dbf | ext:mdb`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'log') {
+                result = `site:${input} ext:log`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'robot') {
+                result = `site:${input} inurl:robots.txt`;
+                searchUrl = `https://${input}/robots.txt`;
+            } else if (searchType === 'sql') {
+                result = `site:${input} intext:"sql syntax near" | intext:"syntax error has occurred" | intext:"incorrect syntax near" | intext:"unexpected end of SQL command" |
+                 intext:"Warning: mysql_connect()" | intext:"Warning: mysql_query()" | intext:"Warning: pg_connect()"`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'php') {
+                result = `site:${input} ext:php intitle:phpinfo "published by the PHP Group"`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'subdomain') {
+                result = `site:*${input}`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'domain') {
+                result = `https://www.whois.com/whois/${input}`;
+                searchUrl = `https://www.whois.com/whois/${input}`;
+            } else if (searchType === 'wayback') {
+                result = `https://web.archive.org/web/*/${input}/*`;
+                searchUrl = `https://web.archive.org/web/*/${input}/*`;
+            } else if (searchType === 'shodan') {
+                result = `https://www.shodan.io/search?query=${input}`;
+                searchUrl = `https://www.shodan.io/search?query=${input}`;
+            } else if (searchType === 'github') {
+                result = `site:github.com | site:gitlab.com "${input}"`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'pastebin') {
+                result = `site:pastebin.com ${input}`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'stackoverflow') {
+                result = `site:stackoverflow.com "${input}"`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'linkedin') {
+                result = `site:linkedin.com employees ${input}`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'openbugbounty') {
+                result = `https://www.openbugbounty.org/search/?search=${input}`;
+                searchUrl = `https://www.openbugbounty.org/search/?search=${input}`;
+            } else if (searchType === 'port') {
+                result = `https://hackertarget.com/nmap-online-port-scanner/${input}`;
+                searchUrl = `https://hackertarget.com/nmap-online-port-scanner/${input}`;
+            } else if (searchType === 'sourcecode') {
+                result = `https://publicwww.com/websites/"${input}"/`;
+                searchUrl = `https://publicwww.com/websites/"${input}"/`;
+            } else if (searchType === 'scam') {
+                result = `https://www.scamvoid.net/check/${input}/`;
+                searchUrl = `https://www.scamvoid.net/check/${input}/`;;
+            } else if (searchType === 'malware') {
+                result = `https://sitecheck.sucuri.net/results/${input}`;
+                searchUrl = `https://sitecheck.sucuri.net/results/${input}`;
+            } else if (searchType === 'ssl') {
+                result = `https://www.ssllabs.com/ssltest/analyze.html?d=${input}`;
+                searchUrl = `https://www.ssllabs.com/ssltest/analyze.html?d=${input}`;
+            } else if (searchType === 'netcraft') {
+                result = `https://sitereport.netcraft.com/?url=http:${input}`;
+                searchUrl = `https://sitereport.netcraft.com/?url=http:${input}`;
+            }
+            // Display the generated result with a label
+            resultBox.innerHTML = `Query: ${result}`;
+
+            // Open search in a new tab (background)
+            window.open(searchUrl, '_blank');
+        }
+
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+
+        
+    </script>
+
+</body>
+</html>
