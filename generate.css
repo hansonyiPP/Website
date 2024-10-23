@@ -1,0 +1,118 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Fallback color */
+    color: #fff;
+    line-height: 1.6;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px; /* Adjust the value as needed */
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.search-box {
+    background-color: #24173a;
+    padding: 60px 40px; /* Increased padding for a bigger appearance */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 1100px; /* Increased width */
+    height: 700px;
+    max-width: 90%; /* Ensures it doesn't exceed the viewport */
+    text-align: left; /* Change text alignment to left */
+    margin: 40px auto; /* Centers the box and adds top/bottom margin */
+}
+
+.search-box h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+label {
+    margin-bottom: 5px; /* Space between label and input/select */
+    font-weight: bold; /* Optional: make labels bold */
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    margin-bottom: 60px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    text-align: justify;
+}
+
+select {
+    padding-right: 15px;
+    font-size: 1em;
+}
+
+
+button {
+    width: 80%;
+    padding: 12px;
+    background-color: #4c0999;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 20px auto; /* Center the button horizontally */
+    display: block; /* Change display to block */
+}
+
+
+button:hover {
+    background-color: #772ccd;
+}
+
+/* Results and Error Display */
+#error {
+    margin-top: 10px;
+    color: #ff4f4f;
+}
+
+#result {
+    margin-top: 50px; /* Adjust this value to your preference */
+    font-weight: bold;
+}
+
