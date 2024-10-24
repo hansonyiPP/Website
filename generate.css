@@ -121,6 +121,7 @@ button:hover {
     .search-box {
         padding: 30px 20px; /* Adjust padding for smaller screens */
         width: 80%; /* Adjust width */
+        height:78%;
     }
 
     .search-box h2 {
