@@ -136,4 +136,27 @@ td {
     color:#000
 }
 
+/* Media Queries for 13-inch MacBook */
+@media (max-width: 1280px) {
+    .logo{
+        font-size: 20px;
+    }
 
+    h1 {
+        margin-top: 15px;
+        font-size: 25px;
+    }
+
+    .search-container input[type="text"] {
+        width: 150px; /* Width of the search input */
+        
+    }
+
+    tbody{
+        max-height: 450px;
+    }
+
+    th,td{
+        font-size: 15px;
+    }
+}
