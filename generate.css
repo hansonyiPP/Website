@@ -50,9 +50,8 @@ nav ul li a:hover {
     padding: 60px 40px; /* Increased padding for a bigger appearance */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    width: 1100px; /* Increased width */
-    height: 700px;
-    max-width: 90%; /* Ensures it doesn't exceed the viewport */
+    width: 70%; /* Increased width */
+    height: 69%;
     text-align: left; /* Change text alignment to left */
     margin: 40px auto; /* Centers the box and adds top/bottom margin */
 }
@@ -121,7 +120,7 @@ button:hover {
     .search-box {
         padding: 30px 20px; /* Adjust padding for smaller screens */
         width: 80%; /* Adjust width */
-        height:400px;
+        
     }
 
     .search-box h2 {
@@ -146,4 +145,3 @@ button:hover {
         margin-top: 30px; /* Adjust margin */
     }
 }
-
