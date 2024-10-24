@@ -116,3 +116,33 @@ button:hover {
     font-weight: bold;
 }
 
+/* Media Queries for 13-inch MacBook */
+@media (max-width: 1280px) {
+    .search-box {
+        padding: 30px 20px; /* Adjust padding for smaller screens */
+        width: 80%; /* Adjust width */
+    }
+
+    .search-box h2 {
+        font-size: 30px; /* Slightly smaller heading */
+    }
+ 
+    label {
+        margin-left: 10px;
+    }
+
+    input[type="text"],
+    select {
+        padding: 15px;
+        height:40px;
+    }
+
+    button {
+        width: 80%; /* Adjust button width */
+    }
+
+    #result {
+        margin-top: 30px; /* Adjust margin */
+    }
+}
+
