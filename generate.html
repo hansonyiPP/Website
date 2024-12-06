@@ -30,19 +30,33 @@
 
                 <label for="searchType">Features:</label>
                 <select id="searchType">
+                    <option value="default">Please Choose a Feature</option>
                     <option value="directory">Directory Search</option>
                     <option value="document">Publcily Exposed Documents</option>
                     <option value="database">Database Files</option>
+                    <option value="backup">Backup Files</option>
+                    <option value="swf">SWF Files</option>
                     <option value="log">Log Files</option>
+                    <option value="apache">Apache Configuration Files</option>
                     <option value="robot">Robots.txt Files</option>
                     <option value="sql">SQL Errors</option>
                     <option value="php">phpinfo()</option>
+                    <option value="hta">.htaccess sensitive files</option>
+                    <option value="wordpress">Wordpress Search</option>
+                    <option value="backdoor">Finding Backdoor</option>
+                    <option value="setup">Finding setup files</option>
+                    <option value="redirect">Redirects search</option>
                     <option value="subdomain">Subdomain Lookup</option>
+                    <option value="subsub">Sub-Subdomain Lookup</option>
                     <option value="domain">Whois Domain Lookup</option>
                     <option value="pastebin">Pastebin</option>
                     <option value="wayback">Wayback Machine</option>
                     <option value="shodan">Shodan</option>
-                    <option value="github">Github/GitLab</option>
+                    <option value="gitlab">Gitlab</option>
+                    <option value="github">Github</option>
+                    <option value="gitfolder">Git Folder</option>
+                    <option value="gist">Github Gist</option>
+                    <option value="grep">Grep.app Search</option>
                     <option value="stackoverflow">StackOverflow</option>
                     <option value="linkedin">LinkedIn</option>
                     <option value="openbugbounty">Open Bug Bounty</option>
@@ -50,6 +64,8 @@
                     <option value="scam">Scam Detection</option>
                     <option value="malware">Malware Security Checker</option>
                     <option value="ssl">SSL Certification Inspection</option>
+                    <option value="crt">SSL Information Gathering (CRT.SH)</option>
+                    <option value="header">Security Header Scan</option>
                     <option value="netcraft">Netcraft Site Report</option>
                 </select>
 
@@ -72,21 +88,27 @@
         function performSearch() {
             let input = document.getElementById('inputBox').value.trim();
             const searchType = document.getElementById('searchType').value;
-            const resultBox = document.getElementById('result');
-            const errorBox = document.getElementById('error');
+            const resultbox = document.getElementById('result');
+            const errorbox = document.getElementById('error');
 
-            // Remove http:// or https:// from the input
-            input = input.replace(/^https?:\/\//, '').replace(/\/$/, '');
+            // Remove http://, https://, and www. from the beginning of the input
+            input = input.replace(/^https?:\/\//, '').replace(/^www\./, '').split(':')[0].split('/')[0];
+
+
 
             // Reset the error box
-            errorBox.textContent = '';
+            errorbox.textContent = '';
 
             // Regular expression for domain validation
             const domainPattern = /^(?!:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}(\/.*)?$/;
 
             if (input === '' || !domainPattern.test(input)) {
-                errorBox.textContent = 'Please enter a valid domain name (e.g., something.com or something.net).';
+                errorbox.textContent = 'Please enter a valid domain name (e.g., something.com or something.net).';
                 return;
+            }
+            if (searchType === 'default') {
+                errorbox.textContent = 'Error: Please choose a feature';
+                return;  // Stop the function here and don't proceed with the search
             }
 
             let result;
@@ -100,8 +122,17 @@
             } else if (searchType === 'database') {
                 result = `site:${input} ext:sql | ext:dbf | ext:mdb`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'backup') {
+                result = `site:${input} ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'swf') {
+                result = `inurl:${input} ext:swf`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
             } else if (searchType === 'log') {
                 result = `site:${input} ext:log`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'apache') {
+                result = `site:${input} filetype:config "apache"`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
             } else if (searchType === 'robot') {
                 result = `site:${input} inurl:robots.txt`;
@@ -113,8 +144,26 @@
             } else if (searchType === 'php') {
                 result = `site:${input} ext:php intitle:phpinfo "published by the PHP Group"`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'hta') {
+                result = `site:${input} inurl:"/phpinfo.php" | inurl:".htaccess"`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'wordpress') {
+                result = `site:${input}  inurl:wp- | inurl:wp-content | inurl:plugins | inurl:uploads | inurl:themes | inurl:download`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'backdoor') {
+                result = `site:${input}  inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'setup') {
+                result = `site:${input}  inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'redirect') {
+                result = `site:${input}  inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
             } else if (searchType === 'subdomain') {
                 result = `site:*${input}`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'subsub') {
+                result = `site:*.*.${input}`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
             } else if (searchType === 'domain') {
                 result = `https://www.whois.com/whois/${input}`;
@@ -125,9 +174,21 @@
             } else if (searchType === 'shodan') {
                 result = `https://www.shodan.io/search?query=${input}`;
                 searchUrl = `https://www.shodan.io/search?query=${input}`;
-            } else if (searchType === 'github') {
-                result = `site:github.com | site:gitlab.com "${input}"`;
+            } else if (searchType === 'gitlab') {
+                result = `inurl:gitlab ${input}`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'github') {
+                result = `site:github.com "${input}"`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'gitfolder') {
+                result = `inurl:"/.git "${input} -github`;
+                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
+            } else if (searchType === 'gist') {
+                result = `https://gist.github.com/search?q=*."${input}"`;
+                searchUrl = `https://gist.github.com/search?q=*."${input}"`;
+            } else if (searchType === 'grep') {
+                result = `https://grep.app/search?q=${input}`;
+                searchUrl = `https://grep.app/search?q=${input}`;
             } else if (searchType === 'pastebin') {
                 result = `site:pastebin.com ${input}`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
@@ -155,16 +216,24 @@
             } else if (searchType === 'ssl') {
                 result = `https://www.ssllabs.com/ssltest/analyze.html?d=${input}`;
                 searchUrl = `https://www.ssllabs.com/ssltest/analyze.html?d=${input}`;
+            } else if (searchType === 'crt') {
+                result = `https://crt.sh/?q=%25.${input}`;
+                searchUrl = `https://crt.sh/?q=%25.${input}`;
+            } else if (searchType === 'header') {
+                result = `https://securityheaders.com/?q=${input}&followRedirects=on`;
+                searchUrl = `https://securityheaders.com/?q=${input}&followRedirects=on`;
             } else if (searchType === 'netcraft') {
-                result = `https://sitereport.netcraft.com/?url=http:${input}`;
-                searchUrl = `https://sitereport.netcraft.com/?url=http:${input}`;
+                result = `https://sitereport.netcraft.com/?url=http://${input}`;
+                searchUrl = `https://sitereport.netcraft.com/?url=http://${input}`;
             }
-            // Display the generated result with a label
-            resultBox.innerHTML = `Query: ${result}`;
+                
+                // Display the generated result with a label
+                resultbox.innerHTML = `Query: ${result}`;
 
-            // Open search in a new tab (background)
-            window.open(searchUrl, '_blank');
-        }
+                // Open search in a new tab (background)
+                window.open(searchUrl, '_blank');
+            }
+    
 
         function onSubmit(token) {
             document.getElementById("demo-form").submit();
