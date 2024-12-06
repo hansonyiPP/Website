@@ -52,103 +52,182 @@
             </tr>
             <tr>
                 <td>4</td>
+                <td>Backup Files</td>
+                <td>Identifies exposed backup files that may contain sensitive information</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>SWF Files</td>
+                <td>Identifies Shockwave Flash files that may contain sensitive information</td>
+            </tr>
+            <tr>
+                <td>6</td>
                 <td>Log Files</td>
                 <td>Retrieves logs that can contain information about system activities or errors</td>
             </tr>
             <tr>
-                <td>5</td>
+                <td>7</td>
+                <td>Apache Configuration Files</td>
+                <td>Identifies exposed Apache web server configuration files that may reveal server settings or vulnerabilities</td>
+            </tr>
+            <tr>
+                <td>8</td>
                 <td>Robots.txt Files</td>
                 <td>Checks for the presence of a robots.txt file that can reveal hidden directories or pages</td>
             </tr>
             <tr>
-                <td>6</td>
+                <td>9</td>
                 <td>SQL Errors</td>
                 <td>Searches for error messages that can disclose database structure or vulnerabilities</td>
             </tr>
             <tr>
-                <td>7</td>
+                <td>10</td>
                 <td>phpinfo()</td>
                 <td>Accesses a PHP configuration file that can reveal sensitive server information and configurations</td>
             </tr>
             <tr>
-                <td>8</td>
-                <td>Subdomain Lookup</td>
-                <td>Identifies subdomains of a website, which may expose additional attack surfaces</td>
+                <td>11</td>
+                <td>.htaccess Sensitive Files</td>
+                <td>Identifies exposed .htaccess files, which may contain configuration settings that can reveal vulnerabilities or bypass protections</td>
             </tr>
             <tr>
-                <td>9</td>
+                <td>12</td>
+                <td>Wordpress Search</td>
+                <td>Searches for potential vulnerabilities in Wordpress websites or plugins</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Finding Backdoors</td>
+                <td>Identifies potential backdoor entries in a website</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Finding Setup Files</td>
+                <td>Searches for setup or installation files that might expose sensitive data or configuration details</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Redirect Search</td>
+                <td>Identifies website redirections that may expose system vulnerabilities or information leakage</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Subdomain Lookup</td>
+                <td>Identifies subdomains associated with a main domain to discover additional attack surfaces</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Sub-Subdomain Lookup</td>
+                <td>Identifies further subdomains under existing subdomains to expand the scope of potential vulnerabilities</td>
+            </tr>
+            <tr>
+                <td>18</td>
                 <td>Whois Domain Lookup</td>
                 <td>Provides registration details for a domain, including ownership and contact information</td>
             </tr>
             <tr>
-                <td>10</td>
+                <td>19</td>
                 <td>Pastebin</td>
                 <td>Searches for leaked information or credentials that have been posted publicly on Pastebin</td>
             </tr>
             <tr>
-                <td>11</td>
+                <td>20</td>
                 <td>Wayback Machine</td>
                 <td>Accesses archived versions of a website to find outdated or sensitive information</td>
             </tr>
-                <td>12</td>
+                <td>21</td>
                 <td>Shodan</td>
                 <td>Searches for devices connected to the internet and identifies vulnerabilities in them</td>
             </tr>
             <tr>
-                <td>13</td>
-                <td>Github</td>
+                <td>22</td>
+                <td>Gitlab</td>
                 <td>Looks for exposed source code or sensitive information in public repositories</td>
             </tr>
             <tr>
-                <td>14</td>
+                <td>23</td>
+                <td>Github</td>
+                <td>Searches for exposed source code, credentials, or sensitive data in public repositories</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>Git Folder</td>
+                <td>Searches for exposed Git directories or repositories that may contain sensitive files</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>Github Gist</td>
+                <td>Searches for publicly shared code snippets that might contain sensitive information or vulnerabilities</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>Grep.app Search</td>
+                <td>Searches for code snippets or files using search engine that may contain vulnerabilities or sensitive information</td>
+            </tr>
+            <tr>
+                <td>27</td>
                 <td>StackOverflow</td>
                 <td>Utilizes forums to find potential vulnerabilities or coding mistakes discussed by developers</td>
             </tr>
             <tr>
-                <td>15</td>
+                <td>28</td>
                 <td>LinkedIn</td>
                 <td>Gathers professional information that can be useful for social engineering or targeting</td>
             </tr>
             <tr>
-                <td>16</td>
+                <td>29</td>
                 <td>Open Bug Bounty</td>
                 <td>Participates in programs that reward the discovery of vulnerabilities in software or systems</td>
             </tr>
             <tr>
-                <td>17</td>
+                <td>30</td>
                 <td>SourceCode Search Engine</td>
                 <td>Searches for code snippets or files that may contain vulnerabilities or sensitive information</td>
             </tr>
             <tr>
-                <td>18</td>
+                <td>31</td>
                 <td>Scam Detection</td>
                 <td>Searches for code snippets or files that may contain vulnerabilities or sensitive information</td>
             </tr>
             <tr>
-                <td>19</td>
+                <td>32</td>
                 <td>Malware Security Checker</td>
                 <td>Scans websites or files for known malware signatures, helping identify potential threats and compromised systems</td>
             </tr>
             <tr>
-                <td>20</td>
+                <td>33</td>
                 <td>SSL Certification Inspection</td>
                 <td>Evaluates the validity and strength of SSL certificates on a website, checking for vulnerabilities in encryption and ensuring secure connections</td>
             </tr>
+            <tr>
+                <td>34</td>
+                <td>SSL Information Gathering (CRT.SH)</td>
+                <td>Analyzes SSL certificate details using the public Certificate Transparency log to detect misconfigurations or vulnerable certificates</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td>Security Header Scan</td>
+                <td>Examines HTTP security headers to ensure that they are configured correctly to protect against common web vulnerabilities</td>
+            </tr>
+            <tr>
+                <td>36</td>
+                <td>Netcraft Site Report</td>
+                <td>Provides detailed information on a website's infrastructure, hosting, technologies, and potential vulnerabilities</td>
+            </tr>
         </tbody>
     </table>
-
     <script>
         document.getElementById('search').addEventListener('input', function() {
             const filter = this.value.toLowerCase();
             const table = document.getElementById('featuresTable');
             const rows = table.getElementsByTagName('tr');
     
-            for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header
-                const cells = rows[i].getElementsByTagName('td');
+            for (let x = 1; x < rows.length; x++) { // Start from 1 to skip header
+                const cells = rows[x].getElementsByTagName('td');
                 let matchFound = false;
     
-                for (let j = 0; j < cells.length; j++) {
-                    const cell = cells[j];
+                for (let y = 0; y < cells.length; y++) {
+                    const cell = cells[y];
                     const text = cell.textContent || cell.innerText;
     
                     // Clear existing highlights
@@ -163,19 +242,19 @@
                 }
     
                 // Show or hide row based on match
-                rows[i].style.display = matchFound ? '' : 'none'; 
+                rows[x].style.display = matchFound ? '' : 'none'; 
             }
     
             // If search box is empty, reset all rows and clear highlights
             if (!filter) {
-                for (let i = 1; i < rows.length; i++) {
-                    const cells = rows[i].getElementsByTagName('td');
-                    for (let j = 0; j < cells.length; j++) {
-                        const cell = cells[j];
+                for (let x = 1; x < rows.length; x++) {
+                    const cells = rows[x].getElementsByTagName('td');
+                    for (let y = 0; y < cells.length; y++) {
+                        const cell = cells[y];
                         const text = cell.textContent || cell.innerText;
                         cell.innerHTML = text; // Reset to original text
                     }
-                    rows[i].style.display = ''; // Show all rows
+                    rows[x].style.display = ''; // Show all rows
                 }
             }
         });
