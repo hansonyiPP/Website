@@ -7,6 +7,7 @@
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Search Feature</title>
     <link rel="stylesheet" href="generate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
 </head>
 <body>
@@ -79,6 +80,7 @@
                     data-action='submit'>Submit</button>
 
                 <div id="result">Query: </div>
+                <i id="copyIcon" class="fas fa-copy" onclick="copyquery()"></i>
                 <div id="error" style="color: red;"></div>
             </form>
         </section>
@@ -234,7 +236,22 @@
                 window.open(searchUrl, '_blank');
             }
     
+        function copyquery() {
+            const resultbox = document.getElementById('result');
+            const queryText = resultbox.textContent.replace('Query: ', '');
 
+            if (queryText) {
+                // Copy the query to the clipboard
+                navigator.clipboard.writeText(queryText).then(() => {
+                    alert('Query copied to clipboard!');
+                }).catch(err => {
+                    alert('Failed to copy query: ' + err);
+                });
+            } else {
+                alert('No query to copy!');
+            }
+        }
+        
         function onSubmit(token) {
             document.getElementById("demo-form").submit();
         }
