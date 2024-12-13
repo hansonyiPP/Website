@@ -105,6 +105,18 @@ button:hover {
     background-color: #772ccd;
 }
 
+#copyIcon {
+    font-size: 18px;
+    color: #fff; /* Change to desired color */
+    cursor: pointer;
+    margin-left: 10px; /* Space between query text and icon */
+    vertical-align: middle; /* Align the icon with the text */
+}
+
+#copyIcon:hover {
+    color: #0056b3; /* Change on hover */
+}
+
 /* Results and Error Display */
 #error {
     margin-top: 10px;
