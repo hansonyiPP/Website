@@ -10,7 +10,7 @@ body {
     background-color: #000; /* Fallback color */
     color: #fff;
     line-height: 1.6;
-    background-image: url('image/home.jpg'); /* Add your image path here */
+    background-image: url('home.jpg'); /* Add your image path here */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent tiling */
