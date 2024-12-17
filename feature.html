@@ -217,8 +217,12 @@
         </tbody>
     </table>
     <script>
+        function sanitization(input) {
+            return input.replace(/[^a-z0-9 ]/gi, ''); // Removes everything except letters, numbers, and spaces
+        }
+        
         document.getElementById('search').addEventListener('input', function() {
-            const filter = this.value.toLowerCase();
+            let filter = sanitization(this.value).toLowerCase();
             const table = document.getElementById('featuresTable');
             const rows = table.getElementsByTagName('tr');
     
