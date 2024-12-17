@@ -10,7 +10,7 @@ body {
     background-color: #000; /* Fallback color */
     color: #fff;
     line-height: 1.6;
-    background-image: url('image/home.jpg'); /* Add your image path here */
+    background-image: url('home.jpg'); /* Add your image path here */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent tiling */
@@ -55,8 +55,8 @@ nav ul li a:hover {
 }
 
 h1 {
-    font-size: 55px;
-    margin-bottom: 80px;
+    font-size: 48px;
+    margin-bottom: 40px;
     text-align: left;
 }
 
@@ -67,12 +67,11 @@ h1 {
 }
 
 .content h2 {
-    font-size: 35px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
 .content p {
-    font-size: 25px;
     margin-bottom: 20px;
 }
 
