@@ -50,6 +50,8 @@
                     <option value="subdomain">Subdomain Lookup</option>
                     <option value="subsub">Sub-Subdomain Lookup</option>
                     <option value="domain">Whois Domain Lookup</option>
+                    <option value="geolocation">IP Geolocation Lookup</option>
+                    <option value="technology">Technology Lookup</option>
                     <option value="pastebin">Pastebin</option>
                     <option value="wayback">Wayback Machine</option>
                     <option value="shodan">Shodan</option>
@@ -67,9 +69,8 @@
                     <option value="ssl">SSL Certification Inspection</option>
                     <option value="crt">SSL Information Gathering (CRT.SH)</option>
                     <option value="header">Security Header Scan</option>
-                    <option value="netcraft">Netcraft Site Report</option>
+                    <option value="netcraft">Netcraft Site Report</option>  
                 </select>
-
                 <!-- <button type="button" onclick="performSearch()">Search</button> -->
 
                 <button class="g-recaptcha" 
@@ -170,6 +171,12 @@
             } else if (searchType === 'domain') {
                 result = `https://www.whois.com/whois/${input}`;
                 searchUrl = `https://www.whois.com/whois/${input}`;
+            } else if (searchType === 'geolocation') {
+                result = `https://iplocation.io/ip/${input}`;
+                searchUrl = `https://iplocation.io/ip/${input}`;
+            } else if (searchType === 'technology') {
+                result = `https://w3techs.com/sites/info/${input}`;
+                searchUrl = `https://w3techs.com/sites/info/${input}`;
             } else if (searchType === 'wayback') {
                 result = `https://web.archive.org/web/*/${input}/*`;
                 searchUrl = `https://web.archive.org/web/*/${input}/*`;
