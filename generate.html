@@ -138,7 +138,7 @@
                 result = `site:${input} filetype:config "apache"`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
             } else if (searchType === 'robot') {
-                result = `site:${input} inurl:robots.txt`;
+                result = `https://${input}/robots.txt`;
                 searchUrl = `https://${input}/robots.txt`;
             } else if (searchType === 'sql') {
                 result = `site:${input} intext:"sql syntax near" | intext:"syntax error has occurred" | intext:"incorrect syntax near" | intext:"unexpected end of SQL command" |
