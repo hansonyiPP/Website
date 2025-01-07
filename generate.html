@@ -62,7 +62,6 @@
                     <option value="grep">Grep.app Search</option>
                     <option value="stackoverflow">StackOverflow</option>
                     <option value="linkedin">LinkedIn</option>
-                    <option value="openbugbounty">Open Bug Bounty</option>
                     <option value="sourcecode">SourceCode Search Engine</option>
                     <option value="scam">Scam Detection</option>
                     <option value="malware">Malware Security Checker</option>
@@ -207,9 +206,6 @@
             } else if (searchType === 'linkedin') {
                 result = `site:linkedin.com employees ${input}`;
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(result)}`;
-            } else if (searchType === 'openbugbounty') {
-                result = `https://www.openbugbounty.org/search/?search=${input}`;
-                searchUrl = `https://www.openbugbounty.org/search/?search=${input}`;
             } else if (searchType === 'port') {
                 result = `https://hackertarget.com/nmap-online-port-scanner/${input}`;
                 searchUrl = `https://hackertarget.com/nmap-online-port-scanner/${input}`;
